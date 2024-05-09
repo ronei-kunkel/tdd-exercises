@@ -5,4 +5,4 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./:/app
-    command: sh -c "composer install && /app/vendor/bin/phpunit"
+    command: sh -c "composer install && /app/vendor/bin/phpunit --colors"
