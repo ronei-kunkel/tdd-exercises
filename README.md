@@ -8,6 +8,10 @@
 
 2. run tests: `docker run -it --rm tdd-exercises`
 
+### with docker compose for development
+
+- build image and run tests: `docker compose up --build`
+
 ## Explicação para o eu lírico do futuro
 
 Utilizo do multistage build do docker para, em uma imagem intermediária baseada na imagem do composer, copiar os arquivos de desenvolvimento do projeto.
