@@ -3,7 +3,6 @@
 namespace Tests\Unit\Multiples;
 
 use TddExercises\Multiples\Chain;
-use TddExercises\Multiples\Rule\MultipleOfFive;
 use TddExercises\Multiples\Rule\MultipleOfThree;
 use Tests\TestCase;
 

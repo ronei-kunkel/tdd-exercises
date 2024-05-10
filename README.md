@@ -21,15 +21,3 @@ Em um outro estágio que é o da imagem final, utilizando como base a imagem de 
 
 Isso torna a imagem final muito mais leve e evita que seja necessário fazer bind do volume da pasta vendor por exemplo.
 Também deixa a aplicação completamente isolada, além de evitar que a vendor esteja ocupando espaço tanto no container quanto no host.
-
-## Exercícios
-
-### Multiples
-
-a menor peça é a regra.
-
-uma condicional pode ser composta de várias regras
-
-por fim a soma é obtida através da soma condicional usando várias regras.
-
-<!-- se no final de toda uma cadeia de verificações ele retornar true, eu posso fazer a soma do número; -->
