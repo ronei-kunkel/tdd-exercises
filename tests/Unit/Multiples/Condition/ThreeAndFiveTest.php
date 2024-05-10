@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Tests\Unit\Multiples;
+namespace Tests\Unit\Multiples\Condition;
 
 use TddExercises\Multiples\Condition\Fiveteen;
 use Tests\TestCase;

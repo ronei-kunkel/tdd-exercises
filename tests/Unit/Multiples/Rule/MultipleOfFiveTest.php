@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Tests\Unit\Multiples;
+namespace Tests\Unit\Multiples\Rule;
 
 use TddExercises\Multiples\Chain;
 use TddExercises\Multiples\Rule\MultipleOfFive;
