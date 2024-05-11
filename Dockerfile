@@ -7,4 +7,4 @@ FROM php:8.2-cli-alpine@sha256:0732d9969e6c2994684aac53051dd115799ce20a92c4db8f1
 WORKDIR /app
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 COPY --from=composer /app /app
-CMD ["/app/vendor/bin/phpunit"]
+CMD ["/app/vendor/bin/phpunit", "--testdox"]
