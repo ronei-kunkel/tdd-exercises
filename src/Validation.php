@@ -4,5 +4,5 @@ namespace TddExercises;
 
 abstract class Validation
 {
-  protected abstract function validate(mixed $input): bool;
+  abstract protected function validate(mixed $input): bool;
 }

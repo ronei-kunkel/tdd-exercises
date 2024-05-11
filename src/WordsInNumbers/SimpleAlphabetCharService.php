@@ -16,7 +16,7 @@ final class SimpleAlphabetCharService extends Validation implements Valuable
     return $this->calculatedValue($char);
   }
 
-  public function validate(mixed $char): bool
+  protected function validate(mixed $char): bool
   {
     return match (true) {
       strlen($char) === 1 and preg_match("/[a-zA-Z]/", $char) => true,
