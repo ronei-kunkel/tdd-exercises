@@ -4,6 +4,8 @@
 
 ### with docker
 
+`docker build --no-cache -t tdd-exercises:latest . && docker run -it --rm tdd-exercises`
+
 1. build image: `docker build -t tdd-exercises:latest .`
 
 2. run tests: `docker run -it --rm tdd-exercises`
