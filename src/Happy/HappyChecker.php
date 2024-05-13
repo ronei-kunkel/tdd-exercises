@@ -2,16 +2,9 @@
 
 namespace TddExercises\Happy;
 
-/**
- * Transformar em NumberVerify para ser aberto para extensão (talvez implementar facade para isso)
- * 
- * implementar uma interface de verificação
- * 
- * HappyNumber implements NumberVerify
- * 
- * HappyNumber->verify(int $number)
- */
-final class HappyChecker
+use TddExercises\IntChecker;
+
+final class HappyChecker implements IntChecker
 {
 
   /**
@@ -29,7 +22,7 @@ final class HappyChecker
   /**
    * @throws \Exception Value must be positive.
    */
-  public function isHappy(int $value): bool
+  public function check(int $value): bool
   {
     if($value < 0) {
       throw new \Exception("Value must be positive.");

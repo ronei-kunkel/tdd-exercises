@@ -11,7 +11,7 @@ class HappyTest extends TestCase
   {
     $happyChecker = new HappyChecker();
 
-    $result = $happyChecker->isHappy(7);
+    $result = $happyChecker->check(7);
 
     $this->assertTrue($result);
   }
@@ -20,7 +20,7 @@ class HappyTest extends TestCase
   {
     $happyChecker = new HappyChecker();
 
-    $result = $happyChecker->isHappy(4);
+    $result = $happyChecker->check(4);
 
     $this->assertFalse($result);
   }

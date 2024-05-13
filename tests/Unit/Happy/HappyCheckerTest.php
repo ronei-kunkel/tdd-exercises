@@ -15,14 +15,14 @@ class HappyCheckerTest extends TestCase
 
     $this->expectException(Exception::class);
     $this->expectExceptionMessage("Value must be positive.");
-    $happyChecker->isHappy(-1);
+    $happyChecker->check(-1);
   }
 
   public function test_deve_retornar_true_quando_1(): void
   {
     $happyChecker = new HappyChecker();
 
-    $result = $happyChecker->isHappy(1);
+    $result = $happyChecker->check(1);
 
     $this->assertTrue($result);
   }
@@ -31,34 +31,34 @@ class HappyCheckerTest extends TestCase
   {
     $happyChecker = new HappyChecker();
 
-    $this->assertTrue($happyChecker->isHappy(1));
-    $this->assertTrue($happyChecker->isHappy(7));
-    $this->assertTrue($happyChecker->isHappy(10));
-    $this->assertTrue($happyChecker->isHappy(13));
-    $this->assertTrue($happyChecker->isHappy(19));
-    $this->assertTrue($happyChecker->isHappy(23));
-    $this->assertTrue($happyChecker->isHappy(28));
-    $this->assertTrue($happyChecker->isHappy(31));
-    $this->assertTrue($happyChecker->isHappy(32));
-    $this->assertTrue($happyChecker->isHappy(44));
-    $this->assertTrue($happyChecker->isHappy(49));
-    $this->assertTrue($happyChecker->isHappy(68));
-    $this->assertTrue($happyChecker->isHappy(70));
+    $this->assertTrue($happyChecker->check(1));
+    $this->assertTrue($happyChecker->check(7));
+    $this->assertTrue($happyChecker->check(10));
+    $this->assertTrue($happyChecker->check(13));
+    $this->assertTrue($happyChecker->check(19));
+    $this->assertTrue($happyChecker->check(23));
+    $this->assertTrue($happyChecker->check(28));
+    $this->assertTrue($happyChecker->check(31));
+    $this->assertTrue($happyChecker->check(32));
+    $this->assertTrue($happyChecker->check(44));
+    $this->assertTrue($happyChecker->check(49));
+    $this->assertTrue($happyChecker->check(68));
+    $this->assertTrue($happyChecker->check(70));
 
-    $this->assertFalse($happyChecker->isHappy(2));
-    $this->assertFalse($happyChecker->isHappy(3));
-    $this->assertFalse($happyChecker->isHappy(4));
-    $this->assertFalse($happyChecker->isHappy(5));
-    $this->assertFalse($happyChecker->isHappy(6));
-    $this->assertFalse($happyChecker->isHappy(8));
-    $this->assertFalse($happyChecker->isHappy(9));
-    $this->assertFalse($happyChecker->isHappy(11));
-    $this->assertFalse($happyChecker->isHappy(12));
-    $this->assertFalse($happyChecker->isHappy(14));
-    $this->assertFalse($happyChecker->isHappy(15));
-    $this->assertFalse($happyChecker->isHappy(16));
-    $this->assertFalse($happyChecker->isHappy(17));
-    $this->assertFalse($happyChecker->isHappy(18));
-    $this->assertFalse($happyChecker->isHappy(20));
+    $this->assertFalse($happyChecker->check(2));
+    $this->assertFalse($happyChecker->check(3));
+    $this->assertFalse($happyChecker->check(4));
+    $this->assertFalse($happyChecker->check(5));
+    $this->assertFalse($happyChecker->check(6));
+    $this->assertFalse($happyChecker->check(8));
+    $this->assertFalse($happyChecker->check(9));
+    $this->assertFalse($happyChecker->check(11));
+    $this->assertFalse($happyChecker->check(12));
+    $this->assertFalse($happyChecker->check(14));
+    $this->assertFalse($happyChecker->check(15));
+    $this->assertFalse($happyChecker->check(16));
+    $this->assertFalse($happyChecker->check(17));
+    $this->assertFalse($happyChecker->check(18));
+    $this->assertFalse($happyChecker->check(20));
   }
 }

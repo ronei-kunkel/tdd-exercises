@@ -1,12 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace TddExercises\Multiples\Condition;
+namespace TddExercises\Multiples\Sum;
 
-use TddExercises\Multiples\Rule\MultipleOfFive;
-use TddExercises\Multiples\Rule\MultipleOfSeven;
-use TddExercises\Multiples\Rule\MultipleOfThree;
+use TddExercises\Multiples\Handler\MultipleOf3Or5Handler;
 
-final class ThreeOrFiveAndSeven
+final class ThreeOrFiveSum
 {
   private int $result = 0;
 
@@ -35,12 +33,8 @@ final class ThreeOrFiveAndSeven
 
   private function satisfyConditions(int $value): bool
   {
-    $three = new MultipleOfThree();
-    $five = new MultipleOfFive();
-    $three->next($five);
+    $threOrFive = new MultipleOf3Or5Handler();
 
-    $seven = new MultipleOfSeven();
-
-    return ($three->handle($value) and $seven->handle($value));
+    return $threOrFive->handle($value);
   }
 }

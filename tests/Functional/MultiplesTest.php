@@ -2,9 +2,9 @@
 
 namespace Tests\Functional;
 
-use TddExercises\Multiples\Condition\Fiveteen;
-use TddExercises\Multiples\Condition\ThreeOrFive;
-use TddExercises\Multiples\Condition\ThreeOrFiveAndSeven;
+use TddExercises\Multiples\Sum\FiveteenSum;
+use TddExercises\Multiples\Sum\ThreeOrFiveSum;
+use TddExercises\Multiples\Sum\ThreeOrFiveAndSevenSum;
 use Tests\TestCase;
 
 class MultiplesTest extends TestCase
@@ -12,7 +12,7 @@ class MultiplesTest extends TestCase
 
   public function test_valida_a_soma_de_multiplos_de_3_ou_5_abaixo_de_1000()
   {
-    $threeOrFiveCondition = new ThreeOrFive(1000);
+    $threeOrFiveCondition = new ThreeOrFiveSum(1000);
 
     $sum = $threeOrFiveCondition->sum();
 
@@ -21,7 +21,7 @@ class MultiplesTest extends TestCase
 
   public function test_valida_a_soma_de_multiplos_de_3_e_5_abaixo_de_1000()
   {
-    $fiveteenCondition = new Fiveteen(1000);
+    $fiveteenCondition = new FiveteenSum(1000);
 
     $sum = $fiveteenCondition->sum();
 
@@ -30,7 +30,7 @@ class MultiplesTest extends TestCase
 
   public function test_valida_a_soma_de_multiplos_de_3_ou_5_e_7_abaixo_de_1000()
   {
-    $threeOrFiveAndSeven = new ThreeOrFiveAndSeven(1000);
+    $threeOrFiveAndSeven = new ThreeOrFiveAndSevenSum(1000);
 
     $sum = $threeOrFiveAndSeven->sum();
 

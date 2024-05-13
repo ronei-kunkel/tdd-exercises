@@ -2,14 +2,14 @@
 
 namespace Tests\Unit\Multiples\Condition;
 
-use TddExercises\Multiples\Condition\Fiveteen;
+use TddExercises\Multiples\Sum\FiveteenSum;
 use Tests\TestCase;
 
-class ThreeAndFiveTest extends TestCase
+class ThreeAndFiveSumTest extends TestCase
 {
   public function test_deve_fazer_a_soma_dos_numeros_da_condição_três_e_cinco(): void
   {
-    $fiveteenCondition = new Fiveteen(100);
+    $fiveteenCondition = new FiveteenSum(100);
 
     $sum = $fiveteenCondition->sum();
 
