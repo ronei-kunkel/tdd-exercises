@@ -2,7 +2,7 @@
 
 namespace TddExercises\WordsInNumbers;
 
-final class Word implements Happy, DivisibleBy3Or5, Prime
+final class Word implements Happy, DivisibleBy3Or5, Prime, Contentable
 {
   private bool $prime = false;
   private bool $happy = false;

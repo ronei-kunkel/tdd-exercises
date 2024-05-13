@@ -7,11 +7,14 @@ use Tests\TestCase;
 
 class PrimeCheckerTest extends TestCase
 {
-  
+
   public function test_deve_validar_numeros_primos(): void
   {
     $prime = new PrimeChecker();
 
+    $this->assertFalse($prime->check(-1));
+    $this->assertFalse($prime->check(0));
+    $this->assertTrue($prime->check(1));
     $this->assertTrue($prime->check(2));
     $this->assertTrue($prime->check(3));
     $this->assertTrue($prime->check(5));

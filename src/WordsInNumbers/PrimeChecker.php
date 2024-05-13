@@ -8,6 +8,10 @@ final class PrimeChecker implements IntChecker
 {
   public function check(int $number): bool
   {
+    if($number < 1) {
+      return false;
+    }
+
     return $this->calculate($number);
   }
 
@@ -21,6 +25,6 @@ final class PrimeChecker implements IntChecker
       }
     }
 
-    return ($multiples == 2);
+    return ($multiples <= 2);
   }
 }

@@ -2,10 +2,10 @@
 
 namespace TddExercises\WordsInNumbers\Handler;
 
-use TddExercises\Happy\HappyChecker;
 use TddExercises\IntChecker;
 use TddExercises\Multiples\Handler;
 use TddExercises\Valuable;
+use TddExercises\WordsInNumbers\Contentable;
 use TddExercises\WordsInNumbers\Happy;
 use TddExercises\WordsInNumbers\Word;
 
@@ -23,7 +23,7 @@ final class HappyHandler extends Handler
    */
   public function handle(mixed $input): bool
   {
-    if(!$input instanceof Word) {
+    if(!$input instanceof Contentable) {
       return false;
     }
 
