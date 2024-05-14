@@ -48,7 +48,7 @@ class CartTest extends TestCase
     $this->assertEquals('Test User', $cart->getDeliveryName());
   }
 
-  public function test_should_add__repeated_product_on_cart_result_in_increase_of_units_only(): void
+  public function test_should_add_repeated_product_on_cart_result_in_increase_of_units_only(): void
   {
     $userMock = $this->createMock(User::class);
     $userMock->method('name')->willReturn('Test User');

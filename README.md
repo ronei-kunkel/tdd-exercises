@@ -23,3 +23,8 @@ Em um outro estágio que é o da imagem final, utilizando como base a imagem de 
 
 Isso torna a imagem final muito mais leve e evita que seja necessário fazer bind do volume da pasta vendor por exemplo.
 Também deixa a aplicação completamente isolada, além de evitar que a vendor esteja ocupando espaço tanto no container quanto no host.
+
+## Dúvida
+
+- como contornar erro do php unit que fala que uma classe não pode ser dublada por ser final?
+PHPUnit\Framework\MockObject\Generator\ClassIsFinalException: Class "TddExercises\Freight\User" is declared "final" and cannot be doubled

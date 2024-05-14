@@ -26,4 +26,15 @@ class CartProductTest extends TestCase
     $systemProduct = new Product('Test Product', 1199);
     new CartProduct($systemProduct, 0);
   }
+
+  public function test_should_return_the_system_product(): void
+  {
+    $systemProduct = new Product('Test Product', 1199);
+    $product = new CartProduct($systemProduct, 1);
+
+    $this->assertEquals('Test Product', $product->name());
+    $this->assertEquals(1199, $product->value());
+    $this->assertEquals(1, $product->units());
+    $this->assertEquals($systemProduct, $product->getSystemProduct());
+  }
 }

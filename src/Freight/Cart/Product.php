@@ -21,4 +21,9 @@ class Product extends SystemProduct
   {
     return $this->units;
   }
+
+  public function getSystemProduct(): SystemProduct
+  {
+    return $this->product;
+  }
 }

@@ -52,6 +52,7 @@ class Cart
   {
     if ($this->productList->has($cartProduct)) {
       $this->productList->addUnitsIn($cartProduct);
+      return;
     }
 
     $this->productList->add($cartProduct);
@@ -65,11 +66,11 @@ class Cart
       return false;
     }
 
-    if (!$this->productList->canRemoveUnitsFrom($cartProduct)) {
+    if (!$this->productList->canRemoveUnitsOf($cartProduct)) {
       return false;
     }
 
-    $this->productList->removeUnitsFrom($cartProduct);
+    $this->productList->removeUnitsOf($cartProduct);
 
     return true;
   }
@@ -90,7 +91,7 @@ class Cart
   {
     $amount = 0;
     foreach ($this->productList->products() as $product) {
-      $amount += $product->value();
+      $amount += $product->value() * $product->units();
     }
 
     return $amount;
