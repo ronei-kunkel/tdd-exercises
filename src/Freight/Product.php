@@ -8,6 +8,9 @@ class Product
     protected string $name,
     protected int $value
   ) {
+    if($value < 0) {
+      throw new \DomainException("Invalid product value. It must be greather or equals to 0");
+    }
   }
 
   public function name(): string

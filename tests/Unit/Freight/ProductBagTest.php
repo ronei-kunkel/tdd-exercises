@@ -68,4 +68,20 @@ class ProductBagTest extends TestCase
     $this->assertTrue($valueOfCartProduct2IsCorrect);
     $this->assertTrue($unitsOfCartProduct2IsCorrect);
   }
+
+  public function test_cant_add_product_with_invalid_units(): void
+  {
+    $productMock1 = $this->createMock(Product::class);
+    $productMock1->method('name')->willReturn('Product Test 1');
+    $productMock1->method('value')->willReturn(1150); // R$11,50
+
+    $productMock1Units = 0;
+
+    $bag = new ProductBag();
+
+    $this->expectException(\DomainException::class);
+    $this->expectExceptionMessage('Invalid value for product units. It must be greather than 0');
+
+    $bag->addProduct($productMock1, $productMock1Units);
+  }
 }

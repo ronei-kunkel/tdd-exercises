@@ -286,4 +286,24 @@ class CartTest extends TestCase
     $this->assertEquals('99999000', $cart->getDeliveryCep());
     $this->assertEquals('Test User', $cart->getDeliveryName());
   }
+
+  public function test_cant_create_product_with_invalid_units(): void
+  {
+    $userMock = $this->createMock(User::class);
+    $userMock->method('name')->willReturn('Test User');
+    $userMock->method('cep')->willReturn('99999000');
+
+    $productMock1 = $this->createMock(Product::class);
+    $productMock1->method('name')->willReturn('Product Test 1');
+    $productMock1->method('value')->willReturn(1150); // R$11,50
+
+    $productMock1Units = 0;
+
+    $cart = new Cart($userMock);
+
+    $this->expectException(\DomainException::class);
+    $this->expectExceptionMessage('Invalid value for product units. It must be greather than 0');
+
+    $cart->addProduct($productMock1, $productMock1Units);
+  }
 }

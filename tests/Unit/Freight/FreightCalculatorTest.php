@@ -12,6 +12,9 @@ class FreightCalculatorTest extends TestCase
 {
   public function test_fee_should_be_calculated_by_external_service_when_cart_amount_less_than_100(): void
   {
+    /**
+     * @var Cart|\PHPUnit\Framework\MockObject\MockObject
+     */
     $cartWith9999amountMock = $this->getMockBuilder(Cart::class)
       ->setConstructorArgs([$this->createMock(User::class)])
       ->getMock();
@@ -22,7 +25,7 @@ class FreightCalculatorTest extends TestCase
 
     $freightCalculator = new FreightCalculator($correiosApiMock);
 
-    $cart9999CalculatedAmount = $freightCalculator->calculate($cartWith9999amount);
+    $cart9999CalculatedAmount = $freightCalculator->calculateAmount($cartWith9999amountMock);
 
     $this->assertEquals(11499, $cart9999CalculatedAmount);
     $correiosApiMock->expects($this->once())->method('quoteFor');
@@ -31,11 +34,17 @@ class FreightCalculatorTest extends TestCase
 
   public function test_fee_should_not_be_calculated_by_external_service_when_cart_amount_greater_or_equal_to_100(): void
   {
+    /**
+     * @var Cart|\PHPUnit\Framework\MockObject\MockObject
+     */
     $cartWith10000amountMock = $this->getMockBuilder(Cart::class)
       ->setConstructorArgs([$this->createMock(User::class)])
       ->getMock();
     $cartWith10000amountMock->method('getAmount')->willReturn(10000); // R$100,00
 
+    /**
+     * @var Cart|\PHPUnit\Framework\MockObject\MockObject
+     */
     $cartWith10001amountMock = $this->getMockBuilder(Cart::class)
       ->setConstructorArgs([$this->createMock(User::class)])
       ->getMock();
@@ -45,14 +54,38 @@ class FreightCalculatorTest extends TestCase
 
     $freightCalculator = new FreightCalculator($correiosApiMock);
 
-    $cart10000CalculatedAmount = $freightCalculator->calculateAmount($cartWith10000amount);
+    $cart10000CalculatedAmount = $freightCalculator->calculateAmount($cartWith10000amountMock);
 
-    $cart10001CalculatedAmount = $freightCalculator->calculateAmount($cartWith10001amount);
+    $cart10001CalculatedAmount = $freightCalculator->calculateAmount($cartWith10001amountMock);
 
     $this->assertEquals(10000, $cart10000CalculatedAmount);
     $this->assertEquals(10001, $cart10001CalculatedAmount);
     $correiosApiMock->expects($this->never())->method('quoteFor');
     $cartWith10000amountMock->expects($this->once())->method('getAmount');
     $cartWith10001amountMock->expects($this->once())->method('getAmount');
+  }
+
+  public function test_cant_calculate_empty_cart(): void
+  {
+    /**
+     * @var Cart|\PHPUnit\Framework\MockObject\MockObject
+     */
+    $cartWith0amountMock = $this->getMockBuilder(Cart::class)
+      ->setConstructorArgs([$this->createMock(User::class)])
+      ->getMock();
+    $cartWith0amountMock->method('getAmount')->willReturn(0); // R$99,99
+    $cartWith0amountMock->method('isEmpty')->willReturn(true);
+
+    $correiosApiMock = $this->createMock(FreightFeeApi::class);
+
+    $freightCalculator = new FreightCalculator($correiosApiMock);
+
+    $this->expectException(\Exception::class);
+    $this->expectExceptionMessage('Cannot calculate empty cart. Add products to cart to be able to calculate fee');
+
+    $freightCalculator->calculateAmount($cartWith0amountMock);
+
+    $correiosApiMock->expects($this->never())->method('quoteFor');
+    $cartWith0amountMock->expects($this->once())->method('isEmpty');
   }
 }

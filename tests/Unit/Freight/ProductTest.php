@@ -14,4 +14,12 @@ class ProductTest extends TestCase
     $this->assertEquals('Test Product', $product->name());
     $this->assertEquals(1199, $product->value());
   }
+
+  public function test_cant_create_product_with_invalid_value(): void
+  {
+    $this->expectException(\DomainException::class);
+    $this->expectExceptionMessage('Invalid product value. It must be greather or equals to 0');
+
+    new Product('Test Product', -1);
+  }
 }

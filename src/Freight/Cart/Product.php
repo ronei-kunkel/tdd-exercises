@@ -4,12 +4,16 @@ namespace TddExercises\Freight\Cart;
 
 use TddExercises\Freight\Product as SystemProduct;
 
-final class Product extends SystemProduct
+class Product extends SystemProduct
 {
   public function __construct(
     private SystemProduct $product,
     private int $units
   ) {
+    if($units <= 0) {
+      throw new \DomainException("Invalid value for product units. It must be greather than 0");
+    }
+
     parent::__construct($product->name(), $product->value());
   }
 
