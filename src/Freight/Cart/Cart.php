@@ -36,43 +36,23 @@ class Cart
   {
     $cartProduct = new CartProduct($systemProduct, $units);
 
-    $this->addInList($cartProduct);
+    $this->productList->add($cartProduct);
 
     return $this;
   }
 
   public function addProducts(ProductBag $products): void
   {
-    foreach ($products as $product) {
-      $this->addInList($product);
+    foreach ($products->products() as $cartProduct) {
+      $this->productList->add($cartProduct);
     }
-  }
-
-  private function addInList(CartProduct $cartProduct): void
-  {
-    if ($this->productList->has($cartProduct)) {
-      $this->productList->addUnitsIn($cartProduct);
-      return;
-    }
-
-    $this->productList->add($cartProduct);
   }
 
   public function removeItemOf(SystemProduct $systemProduct, int $units = 1): bool
   {
     $cartProduct = new CartProduct($systemProduct, $units);
 
-    if (!$this->productList->has($cartProduct)) {
-      return false;
-    }
-
-    if (!$this->productList->canRemoveUnitsOf($cartProduct)) {
-      return false;
-    }
-
-    $this->productList->removeUnitsOf($cartProduct);
-
-    return true;
+    return $this->productList->removeUnitsOf($cartProduct);
   }
 
   public function removeProduct(SystemProduct $systemProduct): bool

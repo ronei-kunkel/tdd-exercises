@@ -7,10 +7,13 @@ use TddExercises\Freight\Product as SystemProduct;
 
 class ProductBag
 {
-  private \SplQueue $productList;
+  /**
+   * @var CartProduct[]
+   */
+  private array $productList;
   public function __construct()
   {
-    $this->productList = new \SplQueue();
+    $this->productList = [];
   }
 
   public function addProduct(SystemProduct $product, int $units): self
@@ -20,19 +23,19 @@ class ProductBag
     }
 
     $cartProduct = new CartProduct($product, $units);
-    $this->productList->enqueue($cartProduct);
+    $this->productList[] = $cartProduct;
     return $this;
   }
 
   /**
    * @return CartProduct[]
    */
-  public function products(): \Iterator
+  public function products(): array
   {
-    $copiedQueue = new \SplQueue();
+    $copiedQueue = [];
 
     foreach ($this->productList as $product) {
-      $copiedQueue->enqueue(clone $product);
+      $copiedQueue[] = clone $product;
     }
 
     return $copiedQueue;

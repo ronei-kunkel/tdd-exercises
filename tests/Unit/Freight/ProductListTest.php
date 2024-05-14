@@ -55,7 +55,7 @@ class ProductListTest extends TestCase
     $this->assertTrue($productList->has($cartProduct1));
   }
 
-  public function test_create_product_when_add_units_of_unlisted_product(): void
+  public function test_cannot_create_product_when_add_units_of_unlisted_product(): void
   {
     $cartProduct1 = new CartProduct(new SystemProduct('Product Test 1', 9999), 3);
 
@@ -63,7 +63,7 @@ class ProductListTest extends TestCase
 
     $productList->addUnitsIn($cartProduct1);
 
-    $this->assertTrue($productList->has($cartProduct1));
+    $this->assertFalse($productList->has($cartProduct1));
   }
 
   public function test_remove_products(): void
@@ -128,9 +128,9 @@ class ProductListTest extends TestCase
 
     $productList->add($cartProduct1);
 
-    $retrieveSystemProduct = $productList->getCartProduct($systemProduct);
+    $retrieveCartProduct = $productList->getCartProduct($systemProduct);
 
-    $this->assertEquals($retrieveSystemProduct, $systemProduct);
+    $this->assertEquals($retrieveCartProduct, $cartProduct1);
   }
 
   public function test_return_quantity_of_products(): void

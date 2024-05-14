@@ -17,14 +17,12 @@ class FreightCalculator
       throw new \Exception('Cannot calculate empty cart. Add products to cart to be able to calculate fee');
     }
 
-    $cartAmount = $cart->getAmount();
+    $amount = $cart->getAmount();
 
-    $fee = 0;
-
-    if ($cartAmount < 10000) {
-      $fee = $this->freightFeeApi->quoteFor($cart->getDeliveryCep());
+    if ($amount < 10000) {
+      $amount += $this->freightFeeApi->quoteFor($cart->getDeliveryCep());
     }
 
-    return $cartAmount + $fee;
+    return $amount;
   }
 }
